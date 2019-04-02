@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  HuanLiDemo
+//
+//  Created by cc on 2019/3/26.
+//  Copyright © 2019 HuanLiDemo. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#define kScreenSize [UIScreen mainScreen].bounds.size
+#define kScreenSizeWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenSizeHeight [UIScreen mainScreen].bounds.size.height
+
+/** rgb颜色转换（16进制->10进制） */
+#define HL_ColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define HLBgColor HL_ColorFromRGB(0x2c2c2c)
+
+#endif /* PrefixHeader_pch */
