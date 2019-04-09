@@ -17,7 +17,7 @@
 }
 + (CGFloat)cellHeight
 {
-    return 150.f;
+    return 110.f;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -42,20 +42,24 @@
 
 - (void)addButtons
 {
-    CGFloat btnWidth = 100;
-    CGFloat btnY = 25;
-    CGFloat space = 40;
+    CGFloat btnWidth = 80;
+    CGFloat btnY = 15;
+    CGFloat space = 20;
     
     _bgScrollView = [[UIScrollView alloc] init];
-    _bgScrollView.backgroundColor = [UIColor lightGrayColor];
-    _bgScrollView.contentSize = CGSizeMake((BtnCount+1)*(space+btnWidth), [[self class] cellHeight]);
+    _bgScrollView.backgroundColor = HL_ColorFromRGB(0xdddddd);
+    _bgScrollView.showsHorizontalScrollIndicator = NO;
+    
     [self addSubview:_bgScrollView];
 
-    BOOL hasData = [HLView hasDataWithType:HLViewTypeRotationBanner positionCode:@""];
+    BOOL hasData = [HLView hasDataWithType:HLViewTypeRotationBanner positionCode:@"home_navigation_button_1"];
     CGFloat hlViewWidth = 0;
+    _bgScrollView.contentSize = CGSizeMake((BtnCount + (hasData?1:0))*(space+btnWidth), [[self class] cellHeight]);
     if (hasData) {
-        HLView *hlView = [HLView viewWithViewType:HLViewTypeRotationBanner positionCode:@"" block:nil];
+        HLView *hlView = [HLView viewWithViewType:HLViewTypeRotationBanner positionCode:@"home_navigation_button_1" block:nil];
         hlView.frame = CGRectMake(space, btnY, btnWidth, btnWidth);
+        hlView.layer.cornerRadius = btnWidth/2.0;
+        hlView.layer.masksToBounds = YES;
         [_bgScrollView addSubview:hlView];
         hlViewWidth = btnWidth;
     }
@@ -64,6 +68,8 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setImage:[UIImage imageNamed:@"200.png"] forState:UIControlStateNormal];
         btn.frame = CGRectMake(hlViewWidth +space+i*(btnWidth+space), btnY, btnWidth, btnWidth);
+        btn.layer.cornerRadius = btnWidth/2.0;
+        btn.layer.masksToBounds = YES;
         [_bgScrollView addSubview:btn];
     }
     

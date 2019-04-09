@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param type HLViewType
  @param positionCode 运营id
  @param placeHolder 占位图
- @param emptyDataBlock 无数就时调用
+ @param emptyDataBlock 无数据时调用
  @return hlview
  */
 + (HLView *)viewWithViewType:(HLViewType)type positionCode:(NSString *)positionCode placeHolder:(NSString *)placeHolder block:(nullable HLViewEmptyDataBlock)emptyDataBlock;

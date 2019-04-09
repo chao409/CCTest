@@ -32,10 +32,20 @@ static NSString *const CellIdentifier = @"CellIdentifier";
     tbView.delegate = self;
     tbView.dataSource = self;
     tbView.backgroundColor = [UIColor clearColor];
-    tbView.separatorColor = [UIColor whiteColor];
     [tbView setTableFooterView:[UIView new]];
     [self.view addSubview:tbView];
     self.tableView = tbView;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.alertMessage) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"运营位说明" message:self.alertMessage preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        self.alertMessage = nil;
+    }
 }
 
 - (void)back
@@ -84,9 +94,7 @@ static NSString *const CellIdentifier = @"CellIdentifier";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = self.dataArray[indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

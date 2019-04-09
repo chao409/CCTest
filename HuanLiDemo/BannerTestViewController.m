@@ -11,6 +11,7 @@
 #import "RotationChartTableViewCell.h"
 #import "ButtonListTableViewCell.h"
 #import "ContentListTableViewCell.h"
+#import "TextLinkTableViewCell.h"
 #import <HLApi/HLView.h>
 
 @interface BannerTestViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -22,6 +23,7 @@ static NSString *const RotationChartCellIdentifier = @"RotationChartCellIdentifi
 static NSString *const ButtonListCellIdentifier = @"ButtonListCellIdentifier";
 static NSString *const ContentlistCellIdentifier = @"ContentlistCellIdentifier";
 static NSString *const OterCellIdentifier = @"OterCellIdentifier";
+static NSString *const TextLinkCellIdentifier = @"TextLinkCellIdentifier";
 @implementation BannerTestViewController
 
 - (void)viewDidLoad
@@ -34,6 +36,7 @@ static NSString *const OterCellIdentifier = @"OterCellIdentifier";
     [tbView registerClass:[RotationChartTableViewCell class] forCellReuseIdentifier:RotationChartCellIdentifier];
     [tbView registerClass:[ButtonListTableViewCell class] forCellReuseIdentifier:ButtonListCellIdentifier];
     [tbView registerClass:[ContentListTableViewCell class] forCellReuseIdentifier:ContentlistCellIdentifier];
+    [tbView registerClass:[TextLinkTableViewCell class] forCellReuseIdentifier:TextLinkCellIdentifier];
     [tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:OterCellIdentifier];
     tbView.delegate = self;
     tbView.dataSource = self;
@@ -45,12 +48,25 @@ static NSString *const OterCellIdentifier = @"OterCellIdentifier";
     [self addview];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.alertMessage) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"运营位说明" message:self.alertMessage preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        self.alertMessage = nil;
+    }
+}
+
+
 - (void)addview
 {
-    HLView *view = [HLView viewWithViewType:HLViewTypeSuspensionView positionCode:@"" block:nil];
-    view.backgroundColor = [UIColor redColor];
-    view.frame = CGRectMake(self.view.frame.size.width - 100 -20,self.view.frame.size.height - 50-100 , 100, 100);
-    view.layer.cornerRadius = 50;
+    HLView *view = [HLView viewWithViewType:HLViewTypeSuspensionView positionCode:@"product_list_suspension_window" block:nil];
+    view.backgroundColor = HL_ColorFromRGB(0xbbbbbb);
+    view.frame = CGRectMake(self.view.frame.size.width - 60 -20,self.view.frame.size.height - 50-60 , 60, 60);
+    view.layer.cornerRadius = 30;
     view.layer.masksToBounds = YES;
     [self.view addSubview:view];
 }
@@ -70,9 +86,17 @@ static NSString *const OterCellIdentifier = @"OterCellIdentifier";
             return [ButtonListTableViewCell cellHeight];
             break;
         case 2:
+            if ([HLView hasDataWithType:HLViewTypeTextLink positionCode:@"home_text_link_1"])
+            {
+                return [TextLinkTableViewCell cellHeight];
+            }else{
+                return 0;
+            }
+           
+        case 3:
             return [ContentListTableViewCell cellHeight];
             break;
-            
+        
         default:
             break;
     }
@@ -80,35 +104,25 @@ static NSString *const OterCellIdentifier = @"OterCellIdentifier";
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    switch (indexPath.section) {
-        case 0:
-            
-            break;
-        case 1:
-            
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            break;
-        default:
-            break;
-    }
 }
 
 #pragma mark - tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 2) {
-        return 10;
+    if (section == 3) {
+        if ([HLView hasDataWithType:HLViewTypeContentBanner positionCode:@"home_page_banner_1"]) {
+            return 10;
+        }
+        return 9;
+    }else if(section == 2 && ![HLView hasDataWithType:HLViewTypeTextLink positionCode:@"home_text_link_1"])
+    {
+        return 0;
     }
     return 1;
 }
@@ -123,6 +137,9 @@ static NSString *const OterCellIdentifier = @"OterCellIdentifier";
             cell = [tableView dequeueReusableCellWithIdentifier:ButtonListCellIdentifier forIndexPath:indexPath];
             break;
         case 2:
+            cell = [tableView dequeueReusableCellWithIdentifier:TextLinkCellIdentifier forIndexPath:indexPath];
+            break;
+        case 3:
             if (indexPath.row == 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:ContentlistCellIdentifier forIndexPath:indexPath];
             }else

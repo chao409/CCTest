@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)uploadBuyProductWithActionId:(NSString *)aId buyResult:(NSString *)result buyAmount:(NSString *)buyAmount subscribeId:(NSString *)subscribeId productId:(NSString *)productId;
 
-
++ (void)testAction;
 @end
 
 

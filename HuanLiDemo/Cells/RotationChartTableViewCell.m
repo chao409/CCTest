@@ -14,7 +14,7 @@
 }
 + (CGFloat)cellHeight
 {
-    return kScreenSizeWidth* 9.0/16.0;
+    return kScreenSizeWidth* 9.0/21.0;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -52,12 +52,12 @@
     _scrollView.clipsToBounds = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.contentSize = CGSizeMake(imageWidth*(dataArray.count+1), imageHeight);
     [self addSubview:_scrollView];
     
     
     BOOL hasData = [HLView hasDataWithType:HLViewTypeRotationBanner positionCode:@"home_top_banner_1"];
     CGFloat hlViewWidth = 0;
+    _scrollView.contentSize = CGSizeMake(imageWidth*(dataArray.count + (hasData?1:0)), imageHeight);
     
     if (hasData) {
         HLView *view = [HLView viewWithViewType:HLViewTypeRotationBanner positionCode:@"home_top_banner_1" block:nil];

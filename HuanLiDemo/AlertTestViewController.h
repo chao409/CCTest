@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AlertTestViewController : UIViewController
-
+@property (nonatomic, strong) NSString *alertMessage;
 @end
 
 NS_ASSUME_NONNULL_END

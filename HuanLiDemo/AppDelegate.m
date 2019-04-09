@@ -19,25 +19,28 @@
 #define kThreeWeiXinAppId @"wx33dbe99abd90c7d1"
 
 /** huanli */
-#define CCAPPKEY @"1ng012E9"
-#define CCAPPSECRET  @"e903097407dd47bab229626a94436958"
+#define HLAPPKEY @"1ng012E9"
+#define HLAPPSECRET  @"e903097407dd47bab229626a94436958"
 
 @interface AppDelegate ()<HLSdkProtocol,HLShareResultProtocol>
 
 @end
 
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    [HuanLiSDK registerHLApp:CCAPPKEY appSercret:CCAPPSECRET delegate:self];
+    // HLAPPKEY、HLAPPSECRET 是官网申请的appkey和appsecret
+    // 指定delegate 接收SDK回调 (HLSdkProtocol)
+    [HuanLiSDK registerHLApp:HLAPPKEY appSercret:HLAPPSECRET delegate:self];
+    // 第三方平台初始化
+    // 指定delegate接收分享结果回调 (HLShareResultProtocol)
     [HuanLiSDK registerQQApp:kThreeQQAppId WXApp:kThreeWeiXinAppId WBApp:kThreeSinaAppKey delegate:self];
+    
+    [HuanLiSDK testAction];
     
     return YES;
 }
-#pragma mark - delegate
+#pragma mark - HLSdkDelegate
+// webview接收到交互消息
 - (void)didReceiveWebViewMessageType:(HLScriptMessageActionType)type object:(NSString *)object
 {
     switch (type) {
@@ -87,6 +90,8 @@
             break;
     }
 }
+
+// 分享结果回调 statusCode分享结果   errMsg 失败信息   shareType 分享平台
 - (void)shareResponseStatusCode:(HLShareResponseStatusCode)statusCode errMsg:(NSString *)errMsg shareType:(HLShareType)shareType
 {
     NSString *shareStatusStr = @"分享成功";
@@ -127,13 +132,12 @@
     
     NSString *shareTipMessage = [NSString stringWithFormat:@"%@%@",shareTypeStr,shareStatusStr];
 
-    NSLog(@"%s==== %@", shareTipMessage);
+    NSLog(@"%@", shareTipMessage);
     
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    
     return [HuanLiSDK handleOpenURL:url];
 }
 

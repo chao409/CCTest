@@ -25,15 +25,26 @@
     [self addLaunchView];
     
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    if (self.alertMessage) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"运营位说明" message:self.alertMessage preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        self.alertMessage = nil;
+    }
+}
 
 
 - (void)addLaunchView
 {
-    __weak typeof(self) weakSelf = self;
     HLViewType type = self.viewType == LaunchViewTypeFullScreen?HLViewTypeStartupPageFullScreen:HLViewTypeStartupPageHalfScreen;
-    HLView *adView = [HLView viewWithViewType:type positionCode:@"start_up_half" block:^(BOOL isEmptyData) {
+    NSString *positionCode = self.viewType == LaunchViewTypeFullScreen?@"start_up_full":@"start_up_half";
+    HLView *adView = [HLView viewWithViewType:type positionCode:positionCode block:^(BOOL isEmptyData) {
         // 启动图没有数据，直接返回
-    //    [weakSelf back];
     }];
     [self.view insertSubview:adView atIndex:0];
     

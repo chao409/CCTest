@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LaunchScreenViewController : UIViewController
 
 @property (nonatomic, assign) LaunchViewType viewType;
+@property (nonatomic, strong) NSString *alertMessage;
 
 @end
 
