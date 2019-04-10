@@ -147,10 +147,10 @@
 		4239CCC62248C9230053F872 /* sdks */ = {
 			isa = PBXGroup;
 			children = (
+				4239CCE42248C9B30053F872 /* libWeiboSDK */,
 				4239CCE02248C9B30053F872 /* HuanLiSDK */,
 				4239CCDE2248C9B30053F872 /* QQ */,
 				4239CCE92248C9B30053F872 /* WeChatSDK1.8.4_NoPay */,
-				4239CCE32248C9B30053F872 /* weibo */,
 			);
 			path = sdks;
 			sourceTree = "<group>";
@@ -170,14 +170,6 @@
 				4239CCE12248C9B30053F872 /* HLImages.bundle */,
 			);
 			path = HuanLiSDK;
-			sourceTree = "<group>";
-		};
-		4239CCE32248C9B30053F872 /* weibo */ = {
-			isa = PBXGroup;
-			children = (
-				4239CCE42248C9B30053F872 /* libWeiboSDK */,
-			);
-			path = weibo;
 			sourceTree = "<group>";
 		};
 		4239CCE42248C9B30053F872 /* libWeiboSDK */ = {
