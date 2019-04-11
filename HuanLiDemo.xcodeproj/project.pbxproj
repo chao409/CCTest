@@ -540,7 +540,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/WeChatSDK1.8.4_NoPay",
-					"$(PROJECT_DIR)/HuanLiDemo/sdks/weibo/libWeiboSDK",
+					"$(PROJECT_DIR)/HuanLiDemo/sdks/libWeiboSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yinyuetai.imvhd;
@@ -573,7 +573,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/WeChatSDK1.8.4_NoPay",
-					"$(PROJECT_DIR)/HuanLiDemo/sdks/weibo/libWeiboSDK",
+					"$(PROJECT_DIR)/HuanLiDemo/sdks/libWeiboSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yinyuetai.imvhd;
