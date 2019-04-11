@@ -1,6 +1,0 @@
-framework module HLApi {
-  umbrella header "HLApi.h"
-
-  export *
-  module * { export * }
-}

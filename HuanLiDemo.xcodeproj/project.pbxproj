@@ -28,6 +28,7 @@
 		426E6B422244CCAF0022FA88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426E6B412244CCAF0022FA88 /* Assets.xcassets */; };
 		426E6B452244CCAF0022FA88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426E6B432244CCAF0022FA88 /* LaunchScreen.storyboard */; };
 		426E6B482244CCAF0022FA88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 426E6B472244CCAF0022FA88 /* main.m */; };
+		427B87E9225F472000407262 /* HLApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B87E8225F472000407262 /* HLApi.framework */; };
 		428797822249CE17001F3867 /* LaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428797812249CE17001F3867 /* LaunchScreenViewController.m */; };
 		428797862249D4AD001F3867 /* AlertTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428797852249D4AD001F3867 /* AlertTestViewController.m */; };
 		429975902254BB77009ED684 /* TextLinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299758F2254BB77009ED684 /* TextLinkTableViewCell.m */; };
@@ -46,7 +47,6 @@
 		42C12BA922487F5800FB4A59 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C12BA822487F5800FB4A59 /* Photos.framework */; };
 		42C12BAB22487F6300FB4A59 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C12BAA22487F6200FB4A59 /* libc++.tbd */; };
 		42C12BAD22487F6C00FB4A59 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C12BAC22487F6C00FB4A59 /* CFNetwork.framework */; };
-		42E94E22224C665600721C36 /* HLApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E94E21224C665600721C36 /* HLApi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +89,7 @@
 		426E6B442244CCAF0022FA88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		426E6B462244CCAF0022FA88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		426E6B472244CCAF0022FA88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		427B87E8225F472000407262 /* HLApi.framework */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = HLApi.framework; sourceTree = "<group>"; };
 		428797802249CE17001F3867 /* LaunchScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchScreenViewController.h; sourceTree = "<group>"; };
 		428797812249CE17001F3867 /* LaunchScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchScreenViewController.m; sourceTree = "<group>"; };
 		428797832249D02F001F3867 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		42C12BA822487F5800FB4A59 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		42C12BAA22487F6200FB4A59 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		42C12BAC22487F6C00FB4A59 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		42E94E21224C665600721C36 /* HLApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HLApi.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,10 +125,10 @@
 				42C12BA922487F5800FB4A59 /* Photos.framework in Frameworks */,
 				42C12BA722487F4E00FB4A59 /* libsqlite3.tbd in Frameworks */,
 				42C12BA522487F4400FB4A59 /* libz.tbd in Frameworks */,
+				427B87E9225F472000407262 /* HLApi.framework in Frameworks */,
 				42C12BA322487F3A00FB4A59 /* CoreGraphics.framework in Frameworks */,
 				42C12BA122487F3000FB4A59 /* Foundation.framework in Frameworks */,
 				42C12B9F22487F1A00FB4A59 /* AVFoundation.framework in Frameworks */,
-				42E94E22224C665600721C36 /* HLApi.framework in Frameworks */,
 				42C12B9D22487F1100FB4A59 /* CoreText.framework in Frameworks */,
 				42C12B9B22487F0800FB4A59 /* CoreTelephony.framework in Frameworks */,
 				4239CCF52248C9B30053F872 /* libWeChatSDK.a in Frameworks */,
@@ -166,7 +166,7 @@
 		4239CCE02248C9B30053F872 /* HuanLiSDK */ = {
 			isa = PBXGroup;
 			children = (
-				42E94E21224C665600721C36 /* HLApi.framework */,
+				427B87E8225F472000407262 /* HLApi.framework */,
 				4239CCE12248C9B30053F872 /* HLImages.bundle */,
 			);
 			path = HuanLiSDK;
@@ -541,6 +541,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/WeChatSDK1.8.4_NoPay",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/libWeiboSDK",
+					"$(PROJECT_DIR)/HuanLiDemo/sdks/HuanLiSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yinyuetai.imvhd;
@@ -574,6 +575,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/WeChatSDK1.8.4_NoPay",
 					"$(PROJECT_DIR)/HuanLiDemo/sdks/libWeiboSDK",
+					"$(PROJECT_DIR)/HuanLiDemo/sdks/HuanLiSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yinyuetai.imvhd;
